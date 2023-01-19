@@ -1,9 +1,10 @@
 function setup() {
   createCanvas(600, 400);
+  colorMode(HSB);
 }
 
 function draw() {
-  background(250,0,0);
+  background(200,100,200);
 
   
   ellipse(200,100,50,50);
