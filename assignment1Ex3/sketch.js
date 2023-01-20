@@ -26,4 +26,5 @@ function draw() {
   noStroke();
   ellipse(420, 140, 45, 45);
   ellipse(540, 140, 45, 45);
+  
 }
