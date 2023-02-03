@@ -1,6 +1,7 @@
 let spriteSheet;
 let spriteSheet2;
 let spriteSheet3;
+
 let walkingAnimation;
 let walkingAnimation2;
 let walkingAnimation3;
@@ -16,8 +17,8 @@ function setup() {
   imageMode(CENTER);
 
   walkingAnimation = new WalkingAnimation(spriteSheet,80,80,200,200,9);
-  walkingAnimation2 = new WalkingAnimation(spriteSheet2,80,80,100,300,9);
-  walkingAnimation3 = new WalkingAnimation(spriteSheet3,80,80,50,100,9);
+  walkingAnimation2 = new WalkingAnimation(spriteSheet2,80,80,50,350,9);
+  walkingAnimation3 = new WalkingAnimation(spriteSheet3,80,80,300,50,9);
 }
 
 function draw() {
