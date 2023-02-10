@@ -1,10 +1,5 @@
 let spriteSheet;
-let chronoSheet;
-
 let walkingAnimation;
-let walkingAnimation2;
-let chronoAnimation;
-
 let spriteSheetFilenames = ["Bug1.png", "Bug2.png", "Bug3.png", "Bug4.png", "Bug5.png"];
 let spriteSheets = [];
 let animations = [];
@@ -33,12 +28,12 @@ function setup() {
 function reset() {
   game.elapsedTime = 0;
   game.score = 0;
-  game.totalSprites = 25;
+  game.totalSprites = random(15, 30);
 
 
   animations = [];
   for(let i=0; i <= game.totalSprites; i++) {
-    animations[i] = new WalkingAnimation(random(spriteSheets),80,80,random(50,300),random(50,300),9,random(0.5,3),6,random([0,1]));
+    animations[i] = new WalkingAnimation(random(spriteSheets),80,80,random(50,300),random(50,300),9,random(0.5,10),6,random([0,1]));
   }
 }
 
@@ -106,9 +101,9 @@ function mousePressed() {
         let contains = animations[i].contains(mouseX,mouseY);
         if (contains) {
           if (animations[i].moving != 0) {
-            animations[i].stop();
+            animations[i].dead(); 
             if (animations[i].spritesheet === spriteSheets[game.targetSprite])
-              game.score += 1;
+              game.score -= 1;
             else
               game.score += 1;
           }
@@ -199,9 +194,10 @@ class WalkingAnimation {
     return insideX && insideY;
   }
 
-  stop() {
+  dead() {
     this.moving = 0;
-    this.u = 7;
-    this.v = 8;
+    this.u = 0;
+    this.v = 1;
+
   }
 }

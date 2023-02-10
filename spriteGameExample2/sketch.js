@@ -228,7 +228,7 @@ class WalkingAnimation {
 
   stop() {
     this.moving = 0;
-    this.u = 7;
-    this.v = 8;
+    this.u = 1;
+    this.v = 0;
   }
 }
