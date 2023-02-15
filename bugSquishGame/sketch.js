@@ -28,12 +28,12 @@ function setup() {
 function reset() {
   game.elapsedTime = 0;
   game.score = 0;
-  game.totalSprites = random(15, 30);
+  game.totalSprites = random(10, 20);
 
 
   animations = [];
   for(let i=0; i <= game.totalSprites; i++) {
-    animations[i] = new WalkingAnimation(random(spriteSheets),80,80,random(50,300),random(50,300),9,random(0.5,10),6,random([0,1]));
+    animations[i] = new WalkingAnimation(random(spriteSheets),80,80,random(50,300),random(50,300),9,random(0.5,3),6,random([0,1]));
   }
 }
 
@@ -164,6 +164,12 @@ class WalkingAnimation {
     else {
       this.dx += this.moving*this.speed;
       this.move(this.dx,this.sw / 4,width - this.sw / 4);
+    }
+
+    let maxGameSpeed = 20;
+    for(let l = 0; l <= maxGameSpeed; l++) {
+      this.speed += 0.0007;
+
     }
     
   }
