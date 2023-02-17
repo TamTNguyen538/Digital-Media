@@ -28,7 +28,7 @@ function setup() {
 function reset() {
   game.elapsedTime = 0;
   game.score = 0;
-  game.totalSprites = random(10, 20);
+  game.totalSprites = random(15, 20);
 
 
   animations = [];

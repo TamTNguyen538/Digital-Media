@@ -1,4 +1,4 @@
-let sound1 = new Tone.Player("sounds/chicken.wav");
+//let sound1 = new Tone.Player("sounds/chicken.wav");
 
 let sounds = new Tone.Players({
 
@@ -8,45 +8,45 @@ let sounds = new Tone.Players({
 
 })
 
-let button1, button2, button3;
+const delay = new Tone.FeedbackDelay("8n", 0.5);
+
+let soundNames = ["nuggets","drop","duct"];
+let buttons = [];
+
+let dSlider;
+let fSlider;
+
+//let button1, button2, button3;
 
 function setup() {
   createCanvas(400, 400);
+  sounds.connect(delay);
+  delay.toDestination();
 
-  sounds.toDestination();
-  sound1.toDestination();
+  soundNames.forEach((word, index) => {
+    buttons[index] = createButton(word);
+    buttons[index].position(index, index*50);
+    buttons[index].mousePressed( () => buttonSound((word)));
+  })
 
-  button1 = createButton('What else do you have?');
-  button1.position(50, 50);
-  button1.mousePressed(() => buttonSound("nuggets"));
+  dSlider = createSlider(0, 1, 0.5, 0.05);
+  dSlider.mouseReleased( () => {
+    delay.delayTime.value = dSlider.value();
+  })
 
-  button2 = createButton('Water');
-  button2.position(50, 100);
-  button2.mousePressed(() => buttonSound("drop"));
-
-  button3 = createButton('How will we fix these shoes?');
-  button3.position(50, 150);
-  button3.mousePressed(() => buttonSound("duct"));
+  fSlider = createSlider(0, 1, 0.5, 0.05);
+  fSlider.mouseReleased( () => {
+    delay.feedback.value = fSlider.value();
+  })
 }
 
 function draw() {
-  background(220);
+  background(220,120,180);
+  text('press button for sound', 0, 150)
 }
 
-// function keyPressed() {
-//   if(key === "1") {
-//     sound1.playbackRate = (mouseY /200) + 0.01;
-//     sound1.start();
-//   }
-// }
+
 
 function buttonSound(whichSound) {
-  if(whichSound === "nuggets") {
-    sounds.player("nuggets").start();
-  } else if(whichSound === "drop") {
-    sounds.player("drop").start();
-  } else if(whichSound === "duct") {
-    // sound1.playbackRate = (mouseY /200) + 0.01;
-    sounds.player("duct").start();
+    sounds.player(whichSound).start();
   }
-}
