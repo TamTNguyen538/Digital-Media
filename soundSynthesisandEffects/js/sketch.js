@@ -63,7 +63,7 @@ function keyPressed() {
 function mousePressed() {
   console.log('pressed');
   noiseEnv.triggerAttackRelease(0.5);
-  noiseEnv2.triggerAttackRelease(0.5, '+0.5');
-  noiseEnv3.triggerAttackRelease(0.5, '+1');
+  noiseEnv2.triggerAttackRelease(0.5, '+0.8');
+  noiseEnv3.triggerAttackRelease(0.5, '+1.6');
   image = loadImage("assets/bowserHead.png");
 }
